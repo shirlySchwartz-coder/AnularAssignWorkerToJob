@@ -1,0 +1,37 @@
+<div layout="row" class="grid-container center">
+  <p>Selected Job:</p>
+  <div flex>
+    <select [(ngModel)]="selectedJobFromDrop" (change)="onJobSelected($event)">
+      <option *ngFor="let job of jobList" [value]="job.id">
+        <p [innerHtml]="job.name">
+          {{ job.name }}
+        </p>
+      </option>
+    </select>
+  </div>
+  <p>Selected Soldier:</p>
+  <div flex>
+    <select
+      [(ngModel)]="selectedSoldierFromDrop"
+      (change)="onSoldierSelected($event)"
+    >
+      <option *ngFor="let soldier of freeSoldiers" [value]="soldier.id">
+        {{ soldier.name }}
+      </option>
+    </select>
+  </div>
+  <div flex>
+    <input type="button" value="Add" (click)="onAddSoldier()" />
+  </div>
+</div>
+
+<br /><br />
+<div class="center">
+  <h4>Soldiers assigend for the job of :{{ jobSelectedName }}</h4>
+
+  <ul>
+    <li *ngFor="let soldier of soldiersList">
+      {{ soldier.name }}
+    </li>
+  </ul>
+</div>
